@@ -14,7 +14,7 @@ uri = "mongodb+srv://{0}:{1}@cluster0.nff3sst.mongodb.net/?retryWrites=true&w=ma
 mongo_client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
 # Send a ping to confirm a successful connection
 try:
-	mongo_client.admin.command('ping')
+	mongo_client.example.command('ping')
 	print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
 	print(e)
