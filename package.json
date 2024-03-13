@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "python-server": "python3 python-server/main.py",
+        "node-server": "cd node-server && tsc --build && node index.js"
+    }
+}
