@@ -8,7 +8,10 @@ const port: number = 3000;
 
 app.use(express.json());
 
-var uri: string = "mongodb+srv://koupendra:salesforce-slack@cluster0.nff3sst.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+let mongo_db_username: string = process.env.mongo_db_username!;
+let mongo_db_password: string = process.env.mongo_db_password!;
+
+let uri: string = `mongodb+srv://${mongo_db_username}:${mongo_db_password}@cluster0.nff3sst.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 var conn: any = MongoClient.connect(uri);
 
@@ -54,7 +57,7 @@ app.post("/user", async (req: any, res: any) => {
     conn.then((client: any) => {
         client.db('example').collection('users').findOne({user_id: new_user.user_id}).then((user: User) => {
             if (user) {
-                res.status(400).json({
+                res.status(409).json({
                     success: false
                 });
             } else {
