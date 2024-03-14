@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "python-server": "python3 python-server/main.py",
-        "node-server": "cd node-server && tsc --build && node index.js"
+        "python-server": "pip3 install -r requirements.txt && python3 python-server/main.py",
+        "node-server": "cd node-server && npm i && tsc --build && node index.js"
     }
 }
