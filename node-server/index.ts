@@ -63,7 +63,7 @@ async function fetchUser(userId: number): Promise<User> {
     }
     user = await findOneFromMongo('example', 'users', {user_id: userId}, {projection: {_id: 0}});
     if (user && user.user_id) {
-        await setCache(key, user);
+        setCache(key, user);
     }
     return user
 }
