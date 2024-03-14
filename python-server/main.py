@@ -5,6 +5,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import os
 import certifi
+import redis
 
 # Connecting to mongo db
 mongo_db_username = os.environ['mongo_db_username']
@@ -19,6 +20,11 @@ try:
 except Exception as e:
 	print(e)
 
+redis_conn = redis.Redis(
+  host='redis-12442.c309.us-east-2-1.ec2.cloud.redislabs.com',
+  port=12442,
+  password=os.environ['redis_password'],
+  charset="utf-8", decode_responses=True)
 
 app = Flask(__name__)
 api = Api(app)
