@@ -6,12 +6,12 @@ key_template = 'user_id:{}'
 
 def set_cache(key, value):
     rendered_key = key_template.format(key)
-    redis_conn.hmset(rendered_key, value)
+    redis_conn.json().set(rendered_key, '$', value)
     redis_conn.expire(rendered_key, timedelta(minutes=1))
 
 def get_cache(key):
     rendered_key = key_template.format(key)
-    return redis_conn.hgetall(rendered_key)
+    return redis_conn.json().get(rendered_key)
 
 def delete_cache(key):
     rendered_key = key_template.format(key)
